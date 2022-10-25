@@ -2,7 +2,7 @@
 This repo contains a basic NestJS app to be used as base for the tech interview. The goal of the interview is playing around with the technology we use at Maximiliana and facing the challenge of getting to work technology which is new to the candidate. It includes an `Employees` module with hard-coded data which can be use for reference.
 
 ### What we expect
-The task is simple. We want you to create a new endpoint under `/vehicles/byColor` which is able to filter by color all the vehicles stored in a Firebase Realtime DB. Also, the app should be deployed to Google Cloud Run as an unauthenticated service. The DB can be accessed [here](https://console.firebase.google.com/u/5/project/mxa-tech-interview/database/mxa-tech-interview-default-rtdb/data) one logged in with the provided Google account.
+The task is simple. We want you to create a new endpoint under `/vehicles/byColor` which is able to filter by color all the vehicles stored in a Firebase Realtime DB. Also, the app should be deployed to Google Cloud Run as an unauthenticated service. The DB can be accessed [here](https://console.firebase.google.com/u/5/project/mxa-tech-interview/database/mxa-tech-interview-default-rtdb/data) once logged in with the provided Google account.
 
 #### Things we would love to see
 - High code quality, following naming conventions, best practices and good code style
