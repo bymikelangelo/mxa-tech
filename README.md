@@ -7,11 +7,12 @@ The task is simple. We want you to create a new endpoint under `/vehicles/byColo
 #### Things we would love to see
 - High code quality, following naming conventions, best practices and good code style
 - Consistency among the project
+- Parameter validation and safe data transfer
 - The f*cking thing working 
 
 #### Things that do not matter (for the moment 😉)
 - Authentication and security
-- Efficency
+- Efficiency
 - Other endpoints apart form `/vehicles/byColor`
 
 ### Credentials
