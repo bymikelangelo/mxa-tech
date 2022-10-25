@@ -1,40 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { EmployeesRepository } from 'src/employees/repositories/employees.repository';
 import { EmployeeDTO } from '../dtos/employee.dto';
 
 @Injectable()
 export class EmployeesService {
-  getAllEmployees(): EmployeeDTO[] {
-    return [
-      {
-        id: 0,
-        firstName: 'Jorge',
-        lastName: 'Terreu',
-        birthDate: new Date('1998-04-28'),
-      },
-      {
-        id: 1,
-        firstName: 'María',
-        lastName: 'Martínez',
-        birthDate: new Date('1998-10-23'),
-      },
-      {
-        id: 2,
-        firstName: 'Ioana',
-        lastName: 'Neagu',
-        birthDate: new Date('1998-11-15'),
-      },
-      {
-        id: 3,
-        firstName: 'Raúl',
-        lastName: 'Sepúlveda',
-        birthDate: new Date('2000-09-27'),
-      },
-      {
-        id: 4,
-        firstName: 'Jorge',
-        lastName: 'García-Pueyo',
-        birthDate: new Date('1998-12-27'),
-      },
-    ];
+  constructor(private readonly employeesRepository: EmployeesRepository) {}
+
+  getYoungEmployees(): EmployeeDTO[] {
+    return this.employeesRepository
+      .getEmployees()
+      .filter((employee) => employee.birthDate.getFullYear() > 1999)
+      .map((employee) => EmployeeDTO.fromModel(employee));
   }
 }

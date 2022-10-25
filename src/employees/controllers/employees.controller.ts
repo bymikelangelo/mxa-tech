@@ -6,8 +6,8 @@ import { EmployeesService } from '../services/employees.service';
 export class EmployeesController {
   constructor(private readonly employeesService: EmployeesService) {}
 
-  @Get('/all')
+  @Get('/young')
   getHello(): EmployeeDTO[] {
-    return this.employeesService.getAllEmployees();
+    return this.employeesService.getYoungEmployees();
   }
 }
