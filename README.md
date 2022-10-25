@@ -2,12 +2,30 @@
 This repo contains a basic NestJS app to be used as base for the tech interview. The goal of the interview is playing around with the technology we use at Maximiliana and facing the challenge of getting to work technology which is new to the candidate. It includes an `Employees` module with hard-coded data which can be use for reference.
 
 ### What we expect
-The task is simple. We want you to create a new endpoint under `/vehicles/byColor` which is able to filter by color all the vehicles stored in a Firebase Realtime DB. Also, the app should be deployed to Google Cloud Run as an unauthenticated service. The DB can be accessed [here](https://console.firebase.google.com/u/5/project/mxa-tech-interview/database/mxa-tech-interview-default-rtdb/data) once logged in with the provided Google account.
+We want you to create a new endpoint under `/vehicles/byColor` which is able to return, filtered by a parameterized color, the vehicles stored in a Firebase Realtime DB. The returned object should be a list of objects which **just** include the plate number and the manufacturer.
+
+So, for example, given color `YELLOW`, the expected of the endpoint is as follows:
+
+```
+    [
+        {
+            "plate": "5685DFS",
+            "manufacturer": "Seat"
+        },
+        {
+            "plate": "1221HFS",
+            "manufacturer": "Seat"
+        }
+    ]
+```
+
+
+Also, the app should be deployed to Google Cloud Run as an unauthenticated service. The Realtime DB can be accessed [here](https://console.firebase.google.com/u/5/project/mxa-tech-interview/database/mxa-tech-interview-default-rtdb/data) once logged in with the provided Google account.
 
 #### Things we would love to see
 - High code quality, following naming conventions, best practices and good code style
 - Consistency among the project
-- Parameter validation and safe data transfer
+- Parameter validation and appropiate data transfer
 - The f*cking thing working 
 
 #### Things that do not matter (for the moment 😉)
@@ -26,4 +44,4 @@ Jvf?6X_7<e<3KDo`KYL!ou[>%
 We expect the following:
 - A cloned Github repository with a working solution in the provided Docker environment
 - The URL of the Cloud Run service
-- The completion of markdown file `SUMMARY.md` with a *short* executive summary of the proposed solution including an explanation of any decision made or remark the candidate considers important.
+- The completion of markdown file `SUMMARY.md` with a **short** executive summary of the proposed solution including an explanation of any decision made or remark the candidate considers important.
