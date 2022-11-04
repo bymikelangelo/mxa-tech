@@ -1,31 +1,45 @@
 import { Injectable } from "@nestjs/common";
-import { Database, getDatabase, get, ref, child } from "firebase/database"
+import { getDatabase, get, ref, child } from "firebase/database"
 import { Vehicle } from "../models/vehicle.model";
 
 @Injectable()
 export class VehiclesRepository {
     //constructor (private db: Database = getDatabase()) {};
-    getAll(): Vehicle[] {
+    async getAll(): Promise<Vehicle[]> {
+        var vehicles: Vehicle[] = await
+        // get() funciona de forma asincrona, por lo que es necesario devolver el array despues de recoger
+        // los valores de Firebase
         get(child(ref(getDatabase()), "vehicles")).then((snapshot) => {
-            let vehicles: Array<Vehicle>;
             snapshot.forEach(element => {
-                //vehicles.push(element.val());
-                console.log(element.val());
+                let vehicle: Vehicle = this.createVehicle(element.val());
+                vehicles.push(vehicle);  // introduce los elementos en el array vehicles
+                console.log("REPO: " + vehicles);
+            });
+        }).catch ((error) => {
+            console.error(error);
+        }).then (() => { 
+            // console.log(vehicles);
+            return vehicles
+        });
+        console.log("REPO: " + vehicles)
+        return vehicles;
+    }
+
+    getByColor(color: String): Vehicle[] {
+        get(child(ref(getDatabase()), "vehicles")).then((snapshot) => {
+            let vehicles: Vehicle[] = [];
+            snapshot.forEach(element => {
+                if (element.val().color == color) {
+                    var vehicle: Vehicle = this.createVehicle(element.val());
+                    vehicles.push(vehicle);
+                }
             })
             return vehicles;
         });
         return null;
     }
 
-    getByColor(color: String): Vehicle[] {
-        get(child(ref(getDatabase()), "vehicles")).then((snapshot) => {
-            let vehicles: Array<Vehicle>;
-            snapshot.forEach(element => {
-                if (element.val().color == color)
-                    vehicles.push(element.val());
-            })
-            return vehicles;
-        });
-        return null;
+    private createVehicle(element: any): Vehicle {
+        return new Vehicle(element.color, element.gear, element.manufacturer, element.year);
     }
 }
