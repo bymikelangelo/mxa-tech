@@ -10,6 +10,6 @@ export class VehicleDTO {
         this.color = model.getColor();
         this.gear = model.getGear();
         this.manufacturer = model.getManufacturer();
-        this.year =model.getYear();
+        this.year = model.getYear();
     }
 }

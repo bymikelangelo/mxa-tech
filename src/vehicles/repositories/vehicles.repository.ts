@@ -4,25 +4,25 @@ import { Vehicle } from "../models/vehicle.model";
 
 @Injectable()
 export class VehiclesRepository {
-    //constructor (private db: Database = getDatabase()) {};
+    // constructor (private db: Database = getDatabase()) {};
     async getAll(): Promise<Vehicle[]> {
-        var vehicles: Vehicle[] = await
-        // get() funciona de forma asincrona, por lo que es necesario devolver el array despues de recoger
-        // los valores de Firebase
+        const response = await
+        /*
+            get() funciona de forma asincrona, por lo que es necesario devolver el array despues de recoger
+            los valores de Firebase
+        */
         get(child(ref(getDatabase()), "vehicles")).then((snapshot) => {
+            var data = [];
             snapshot.forEach(element => {
-                let vehicle: Vehicle = this.createVehicle(element.val());
-                vehicles.push(vehicle);  // introduce los elementos en el array vehicles
-                console.log("REPO: " + vehicles);
+                data.push(this.createVehicle(element.val()));
             });
+            return data;
         }).catch ((error) => {
             console.error(error);
-        }).then (() => { 
-            // console.log(vehicles);
-            return vehicles
+            return null;
         });
-        console.log("REPO: " + vehicles)
-        return vehicles;
+
+        return await response;
     }
 
     getByColor(color: String): Vehicle[] {

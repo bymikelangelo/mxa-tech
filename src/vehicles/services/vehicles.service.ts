@@ -9,12 +9,13 @@ export class VehiclesService {
 
     getAll(): VehicleDTO[] {
         var vehicles: VehicleDTO[] = [];
-        var promise: Promise<Vehicle[]> = this.vehiclesRepository.getAll();
-        promise.then(function(value) {
+        var promise = this.vehiclesRepository.getAll();
+        promise.then((value) => {
             vehicles = value.map((vehicle) => new VehicleDTO(vehicle));
-            console.log("SERVICE: " + vehicles);
-        })
-        //console.log("SERVICE: " + vehicles);
+            console.log(value);
+        });
+        //console.log(vehicles);
+        
         return vehicles;
     }
 
