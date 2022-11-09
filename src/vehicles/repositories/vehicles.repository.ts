@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { getDatabase, get, ref, child } from "firebase/database"
+import { getDatabase, get, ref, child, query, equalTo, orderByChild } from "firebase/database"
+import { Firebase } from "src/services/firebase";
 import { Vehicle } from "../models/vehicle.model";
 
 @Injectable()
 export class VehiclesRepository {
-    // constructor (private db: Database = getDatabase()) {};
     async getAll(): Promise<Vehicle[]> {
         const response = await
         /*
@@ -19,24 +19,30 @@ export class VehiclesRepository {
             return data;
         }).catch ((error) => {
             console.error(error);
-            return null;
+            return [];
         });
 
-        return await response;
+        return response;
     }
 
-    getByColor(color: String): Vehicle[] {
-        get(child(ref(getDatabase()), "vehicles")).then((snapshot) => {
-            let vehicles: Vehicle[] = [];
+    async getByColor(color: string): Promise<Vehicle[]> {
+        color = color.toUpperCase();
+        console.log(color);
+        const reference = child(ref(getDatabase()), "vehicles");
+        const colorQuery = query(reference, orderByChild('color'), equalTo(color));
+        const response = await
+        get(colorQuery).then((snapshot) => {
+            var data = [];
             snapshot.forEach(element => {
-                if (element.val().color == color) {
-                    var vehicle: Vehicle = this.createVehicle(element.val());
-                    vehicles.push(vehicle);
-                }
-            })
-            return vehicles;
+                data.push(this.createVehicle(element.val()));
+            });
+            return data;
+        }).catch ((error) => {
+            console.error(error);
+            return [];
         });
-        return null;
+
+        return response;
     }
 
     private createVehicle(element: any): Vehicle {

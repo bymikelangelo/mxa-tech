@@ -7,20 +7,31 @@ import { VehicleDTO } from '../dtos/vehicle.dto';
 export class VehiclesService {
     constructor(private readonly vehiclesRepository: VehiclesRepository) {}
 
-    getAll(): VehicleDTO[] {
-        var vehicles: VehicleDTO[] = [];
-        var promise = this.vehiclesRepository.getAll();
-        promise.then((value) => {
-            vehicles = value.map((vehicle) => new VehicleDTO(vehicle));
-            console.log(value);
+    async getAll(): Promise<VehicleDTO[]> {
+        const values = await
+        this.vehiclesRepository.getAll()
+        .then((value) => {
+            let values = [];
+            values = value.map((vehicle) => new VehicleDTO(vehicle));
+            return values;
         });
-        //console.log(vehicles);
-        
-        return vehicles;
+
+        return values;
     }
 
-    getVehiclesByColor(color: string): VehicleDTO[] {
-        return this.vehiclesRepository.getByColor(color).map((vehicle) => new VehicleDTO(vehicle));
+    async getByColor(color: string): Promise<VehicleDTO[]> {
+        color.toUpperCase();
+        const values = await
+        this.vehiclesRepository.getByColor(color)
+        .then((value) => {
+            let values = [];
+            values = value.map((vehicle) => new VehicleDTO(vehicle));
+            return values;
+        });
+        /*values.forEach(value => {
+            console.log(value);
+        });*/
+        return values;
     }
 
 }

@@ -7,12 +7,28 @@ export class VehiclesController {
     constructor(private readonly vehiclesService: VehiclesService) {}
 
     @Get(['', '/all']) 
-    getAll(): VehicleDTO[] {
-        return this.vehiclesService.getAll();
+    async getAll(): Promise<VehicleDTO[]> {
+        const values = await
+        this.vehiclesService.getAll().then((values => {
+            return values;
+        })).catch ((error => {
+            return [];
+        }));
+
+        console.log(values);
+        return values;
     }
 
     @Get('/byColor')
-    getVehiclesByColor(color: String): VehicleDTO[] {
-        return this.vehiclesService.getVehiclesByColor("YELLOW");
+    async getVehiclesByColor(color: String): Promise<VehicleDTO[]> {
+        const values = await
+        this.vehiclesService.getByColor("yellow").then((values => {
+            return values;
+        })).catch ((error => {
+            return [];
+        }));
+
+        console.log(values);
+        return values;
     }
 }
