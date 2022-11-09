@@ -20,7 +20,7 @@ export class Firebase {
     
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-    }  
+    }
 }
 
 

@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { VehicleDTO } from 'src/vehicles/dtos/vehicle.dto';
 import { VehiclesService } from 'src/vehicles/services/vehicles.service';
 
@@ -19,10 +19,12 @@ export class VehiclesController {
         return values;
     }
 
-    @Get('/byColor')
-    async getVehiclesByColor(color: String): Promise<VehicleDTO[]> {
+    @Get('/byColor/:color')
+    async getVehiclesByColor(@Param('color') color: string): Promise<VehicleDTO[]> {
+        color = color.toUpperCase();
+        console.log(color);
         const values = await
-        this.vehiclesService.getByColor("yellow").then((values => {
+        this.vehiclesService.getByColor(color).then((values => {
             return values;
         })).catch ((error => {
             return [];
