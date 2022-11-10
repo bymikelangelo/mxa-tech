@@ -8,29 +8,28 @@ export class VehiclesController {
 
     @Get(['', '/all']) 
     async getAll(): Promise<VehicleDTO[]> {
-        const values = await
+        const vehicles = await
         this.vehiclesService.getAll().then((values => {
             return values;
         })).catch ((error => {
+            console.log(error);
             return [];
         }));
 
-        console.log(values);
-        return values;
+        return vehicles;
     }
 
     @Get('/byColor/:color')
-    async getVehiclesByColor(@Param('color') color: string): Promise<VehicleDTO[]> {
+    async getByColor(@Param('color') color: string): Promise<VehicleDTO[]> {
         color = color.toUpperCase();
-        console.log(color);
-        const values = await
+        const vehicles = await
         this.vehiclesService.getByColor(color).then((values => {
             return values;
         })).catch ((error => {
+            console.log(error);
             return [];
         }));
 
-        console.log(values);
-        return values;
+        return vehicles;
     }
 }

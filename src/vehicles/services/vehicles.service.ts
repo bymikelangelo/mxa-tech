@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { Vehicle } from 'src/vehicles/models/vehicle.model';
 import { VehiclesRepository } from 'src/vehicles/repositories/vehicles.repository';
 import { VehicleDTO } from '../dtos/vehicle.dto';
 
@@ -10,27 +9,30 @@ export class VehiclesService {
     async getAll(): Promise<VehicleDTO[]> {
         const values = await
         this.vehiclesRepository.getAll()
-        .then((value) => {
-            let values = [];
-            values = value.map((vehicle) => new VehicleDTO(vehicle));
-            return values;
+        .then((values) => {
+            let vehicles = [];
+            vehicles = values.map((vehicle) => new VehicleDTO(vehicle));
+            return vehicles;
+        }).catch ((error) => {
+            console.log(error);
+            return [];
         });
 
         return values;
     }
 
     async getByColor(color: string): Promise<VehicleDTO[]> {
-        color.toUpperCase();
         const values = await
         this.vehiclesRepository.getByColor(color)
-        .then((value) => {
-            let values = [];
-            values = value.map((vehicle) => new VehicleDTO(vehicle));
-            return values;
+        .then((values) => {
+            let vehicles = [];
+            vehicles = values.map((vehicle) => VehicleDTO.customView(vehicle));
+            return vehicles;
+        }).catch ((error) => {
+            console.log(error);
+            return [];
         });
-        /*values.forEach(value => {
-            console.log(value);
-        });*/
+
         return values;
     }
 
