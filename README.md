@@ -1,47 +1,46 @@
-## mxa-tech-interview
-This repo contains a basic NestJS app to be used as base for the tech interview. The goal of the interview is playing around with the technology we use at Maximiliana and facing the challenge of getting to work technology which is new to the candidate. It includes an `Employees` module with hard-coded data which can be use for reference.
+## What is mxa-tech?
+Mxa-Tech is a little web app create with NestJS witch let you to see data from a Firebase Realtime Database. It is created as a goal of how can I manage myself using NestJS, TypeScript, Firebase and the diferent technologies [Maximiliana](https://maximiliana.es/) uses every day to work. 
 
-### What we expect
-We want you to create a new endpoint under `/vehicles/byColor` which is able to return, filtered by a parameterized color, the vehicles stored in a Firebase Realtime DB. The returned object should be a list of objects which **just** include the plate number and the manufacturer.
+### How to use it.
+To use this app you have to install NodeJS. You can see the way to install NodeJS libraries in your computer [here](https://github.com/nodesource/distributions/blob/master/README.md). 
 
-So, for example, given color `YELLOW`, the expected of the endpoint is as follows:
+After that, you have to clone this repository in your local PC with ``git clone``.
 
 ```
+    git clone https://github.com/bymikelangelo/mxa-tech.git
+```
+
+Then, to install the modules the app needs to run, open a Terminal in the directory you use to save this repository and where the file **packages.json** is located and write the follow command:
+
+```
+    npm install
+```
+
+Finally, you have to run the app with:
+
+```
+    npm run start
+```
+
+The dafault port NestJS use is number **3000**. Then, you can try doing a HTTP Petition to http://localhost:3000/vehicles to receive data from the Firebase Database. If you use the endpoint vehicles/byColor, you will receive entries depending on the **colour parameter** write on the URL. For example with http://localhost:3000/vehicles/byColor/red you will see:
+    
     [
         {
-            "plate": "5685DFS",
-            "manufacturer": "Seat"
+            "plate":"2112GQS",
+            "manufacturer":"Audi"
         },
         {
-            "plate": "1221HFS",
-            "manufacturer": "Seat"
+            "plate":"4323KJS",
+            "manufacturer":"Seat"
+        },
+        {
+            "plate":"5442KJL",
+            "manufacturer":"Audi"
         }
     ]
+
+You should do the HTTP petition using your Web Broser or using ``curl` command as:
+
 ```
-
-
-Also, the app should be deployed to Google Cloud Run as an unauthenticated service. The Realtime DB can be accessed [here](https://console.firebase.google.com/u/5/project/mxa-tech-interview/database/mxa-tech-interview-default-rtdb/data) once logged in with the provided Google account.
-
-#### Things we would love to see
-- High code quality, following naming conventions, best practices and good code style
-- Consistency among the project
-- Parameter validation and appropiate data transfer
-- The f*cking thing working 
-
-#### Things that do not matter (for the moment 😉)
-- Authentication and security
-- Efficiency
-- Other endpoints apart form `/vehicles/byColor`
-
-### Credentials
-A Google account has been created in order to access the Firebase project (`mxa-tech-interview`) and the Google Cloud Console. Everything id doable in the free tier of both platforms.
+    curl http://localhost:3000/vehicles/byColor/red
 ```
-maximilianatechinterview@gmail.com
-Jvf?6X_7<e<3KDo`KYL!ou[>%
-```
-
-### Delivery
-We expect the following:
-- A cloned Github repository with a working solution in the provided Docker environment
-- The URL of the Cloud Run service
-- The completion of markdown file `SUMMARY.md` with a **short** executive summary of the proposed solution including an explanation of any decision made or remark the candidate considers important.
