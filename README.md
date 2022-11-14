@@ -22,7 +22,7 @@ Finally, you have to run the app with:
     npm run start
 ```
 
-The dafault port NestJS use is number **3000**. Then, you can try doing a HTTP Petition to http://localhost:3000/vehicles to receive data from the Firebase Database. If you use the endpoint vehicles/byColor, you will receive entries depending on the **colour parameter** write on the URL. For example with http://localhost:3000/vehicles/byColor/red you will see:
+The default port NestJS use is number **3000**. Then, you can try doing a HTTP Petition to http://localhost:3000/vehicles to receive data from the Firebase Database. If you use the endpoint vehicles/byColor, you will receive entries depending on the **colour parameter** write on the URL. For example with http://localhost:3000/vehicles/byColor/red you will see:
     
     [
         {
@@ -39,7 +39,7 @@ The dafault port NestJS use is number **3000**. Then, you can try doing a HTTP P
         }
     ]
 
-You should do the HTTP petition using your favourite Web Browser or using ``curl`` command in a Terminal as:
+You should do the HTTP petition in your favourite Web Browser or using ``curl`` command in a Terminal as:
 
 ```
     curl http://localhost:3000/vehicles/byColor/red
