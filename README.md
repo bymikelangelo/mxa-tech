@@ -1,5 +1,5 @@
 ## What is mxa-tech?
-Mxa-Tech is a little web app create with NestJS witch let you to see data from a Firebase Realtime Database. It is created as a goal of how can I manage myself using NestJS, TypeScript, Firebase and the diferent technologies [Maximiliana](https://maximiliana.es/) uses every day to work. 
+Mxa-Tech is a little web app create with NestJS which let you to see data from a Firebase Realtime Database. It is created as a goal of how can I manage myself using NestJS, TypeScript, Firebase and the diferent technologies [Maximiliana](https://maximiliana.es/) uses every day to work. 
 
 ### How to use it.
 To use this app you have to install NodeJS. You can see the way to install NodeJS libraries in your computer [here](https://github.com/nodesource/distributions/blob/master/README.md). 
