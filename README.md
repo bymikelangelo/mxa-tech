@@ -10,7 +10,7 @@ After that, you have to clone this repository in your local PC with ``git clone`
     git clone https://github.com/bymikelangelo/mxa-tech.git
 ```
 
-Then, to install the modules the app needs to run, open a Terminal in the directory you use to save this repository and where the file **packages.json** is located and write the follow command:
+Then, to install the modules the app needs to run, open a Terminal in the directory you are currently using to save this repository and where the file **packages.json** is located and write the follow command:
 
 ```
     npm install
@@ -39,7 +39,7 @@ The dafault port NestJS use is number **3000**. Then, you can try doing a HTTP P
         }
     ]
 
-You should do the HTTP petition using your favourite Web Browser or using ``curl` command in a Terminal as:
+You should do the HTTP petition using your favourite Web Browser or using ``curl`` command in a Terminal as:
 
 ```
     curl http://localhost:3000/vehicles/byColor/red
