@@ -44,3 +44,21 @@ You should do the HTTP petition in your favourite Web Browser or using ``curl`` 
 ```
     curl http://localhost:3000/vehicles/byColor/red
 ```
+
+### Are you using Docker?
+
+If you are a Docker user and you want to run this app in a container, you can create it from **bymikelangelo/mxa-tech:v1** image pulling it from DockerHub. You have to user the command below. 
+
+```
+    docker pull bymikelangelo/mxa-tech:v1
+```
+
+After that, you have to create the docker container with the following command:
+
+```
+    docker run --rm -p 4000:3000 --name mxa-tech bymikelangelo/mxa-tech:v1
+```
+
+Here we are mapping docker's port 3000 to port 4000 of our local machine but you can change your local port to everyone. 
+
+Finally, to stop the container you have to use the command ``docker stop mxa-tech`` in a Terminal. Docker's container will be deleted.
