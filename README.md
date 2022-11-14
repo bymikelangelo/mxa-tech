@@ -39,7 +39,7 @@ The dafault port NestJS use is number **3000**. Then, you can try doing a HTTP P
         }
     ]
 
-You should do the HTTP petition using your Web Broser or using ``curl` command as:
+You should do the HTTP petition using your favourite Web Browser or using ``curl` command in a Terminal as:
 
 ```
     curl http://localhost:3000/vehicles/byColor/red
