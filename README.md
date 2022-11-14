@@ -59,6 +59,6 @@ After that, you have to create the docker container with the following command:
     docker run --rm -p 4000:3000 --name mxa-tech bymikelangelo/mxa-tech:v1
 ```
 
-Here we are mapping docker's port 3000 to port 4000 of our local machine but you can change your local port to everyone. 
+Here we are mapping docker's port 3000 to port 4000 of our local machine but you can change your local port to everyone. In this case, you should do the HTTP petition on **localhost:4000** instead of localhost:3000. 
 
 Finally, to stop the container you have to use the command ``docker stop mxa-tech`` in a Terminal. Docker's container will be deleted.
